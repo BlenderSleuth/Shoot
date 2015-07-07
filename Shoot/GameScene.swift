@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //basescene? or levels
     
@@ -16,8 +16,9 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         initGun()
-        //background colour??
-        self.scene?.physicsWorld.gravity = CGVectorMake(0, 0)
+        self.backgroundColor = UIColor.purpleColor()
+        self.physicsWorld.gravity = CGVectorMake(0, 0)
+        //self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size, center: CGPointMake(self.frame.width/2, self.frame.height / 2))
     }
     
     func initGun() {
@@ -33,9 +34,9 @@ class GameScene: SKScene {
         
         let bullet = SKSpriteNode(texture: bulletTexture)
         bullet.size = CGSizeMake(gun.size.width / 4, gun.size.height / 4)
-        //make higher
-        bullet.position = gun.position
-        bullet.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(50, 50))
+        bullet.name = "bullet"
+        bullet.position = CGPointMake(gun.position.x, gun.position.y + gun.size.height / 3)
+        bullet.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(bullet.size.width / 5, bullet.size.height))
         bullet.zPosition = 5
         return bullet
     }
@@ -43,10 +44,9 @@ class GameScene: SKScene {
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         for touch in touches {
-            //make so only one is on screen at a time
             let bullet = initBullet()
             self.addChild(bullet)
-            bullet.physicsBody?.applyImpulse(CGVectorMake(0, 200))
+            bullet.physicsBody?.applyImpulse(CGVectorMake(0, 20))
         }
     }
    
