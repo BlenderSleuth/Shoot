@@ -8,26 +8,20 @@
 
 import SpriteKit
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class Level1: SKScene, SKPhysicsContactDelegate {
     
-    //basescene? or levels
-    
-    let gun = SKSpriteNode(imageNamed: "spaceship.png")
+    var gun = SKSpriteNode(imageNamed: "spaceship.png")
     
     override func didMoveToView(view: SKView) {
         initGun()
-        self.backgroundColor = UIColor.purpleColor()
-        self.physicsWorld.gravity = CGVectorMake(0, 0)
-        //self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size, center: CGPointMake(self.frame.width/2, self.frame.height / 2))
     }
     
     func initGun() {
+        gun = self.childNodeWithName("gun") as! SKSpriteNode
         gun.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + self.frame.size.height / 4)
         gun.size = CGSizeMake(CGRectGetWidth(self.frame) / 5, CGRectGetWidth(self.frame) / 5)
-        gun.zPosition = 10
-        gun.name = "gun"
-        self.addChild(gun)
     }
+
     
     func initBullet()  -> SKSpriteNode {
         let bulletTexture = SKTexture(imageNamed: "bullet.png")
@@ -35,7 +29,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bullet = SKSpriteNode(texture: bulletTexture)
         bullet.size = CGSizeMake(gun.size.width / 4, gun.size.height / 4)
         bullet.name = "bullet"
-        bullet.position = CGPointMake(gun.position.x, gun.position.y + gun.size.height / 3)
+        bullet.position = CGPointMake(gun.position.x, gun.position.y / 3 * 4)
         bullet.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(bullet.size.width / 5, bullet.size.height))
         bullet.zPosition = 5
         return bullet
@@ -46,7 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let bullet = initBullet()
             self.addChild(bullet)
-            bullet.physicsBody?.applyImpulse(CGVectorMake(0, 20))
+            bullet.physicsBody?.applyImpulse(CGVectorMake(0, 15))
         }
     }
    
