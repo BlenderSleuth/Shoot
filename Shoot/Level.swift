@@ -39,8 +39,19 @@ class Level: SKScene, SKPhysicsContactDelegate {
             bullet.physicsBody?.applyImpulse(CGVectorMake(0, 15))
         }
     }
-   
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if let UITouches = touches as? Set<UITouch> {
+            for touch in UITouches {
+                let location = touch.locationInNode(self)
+                let touchedNode = nodeAtPoint(location)
+                let gunNode = childNodeWithName("gun")
+                
+                if touchedNode == gunNode {
+                    gunNode?.position.x = location.x
+                }
+            }
+        }
     }
+
 }
