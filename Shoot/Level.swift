@@ -10,6 +10,8 @@ import SpriteKit
 
 class Level: SKScene, SKPhysicsContactDelegate {
     
+    var bulletCount = 100
+    
     override func didMoveToView(view: SKView) {
         initGun()
     }
@@ -31,12 +33,20 @@ class Level: SKScene, SKPhysicsContactDelegate {
         bullet.zPosition = 5
         return bullet
     }
+    func initBulletLabel() {
+        let bulletLabel = childNodeWithName("bulletLabel") as! SKLabelNode
+        bulletLabel.position = CGPointMake(CGRectGetMidX(self.frame) / 3, CGRectGetMaxY(self.frame) / 4 * 3)
+        bulletLabel.text = "Bullets: \(bulletCount)"
+    }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         for touch in touches {
-            let bullet = initBullet()
-            self.addChild(bullet)
-            bullet.physicsBody?.applyImpulse(CGVectorMake(0, 15))
+            if bulletCount != 0 {
+                let bullet = initBullet()
+                self.addChild(bullet)
+                --bulletCount
+                bullet.physicsBody?.applyImpulse(CGVectorMake(0, 15))
+            }
         }
     }
     
@@ -53,5 +63,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-
+    
+    override func update(currentTime: NSTimeInterval) {
+        let bulletLabel = childNodeWithName("bulletLabel") as! SKLabelNode
+        bulletLabel.text = "Bullets: \(bulletCount)"
+    }
 }
