@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FCF90AD41B4C948C00246420 /* Level.sks in Resources */ = {isa = PBXBuildFile; fileRef = FCF90AD31B4C948C00246420 /* Level.sks */; };
+		FC788D811B4DE3F600F70680 /* Fipps-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC788D831B4DE3F600F70680 /* Fipps-Regular.otf */; };
 		FCF90AD61B4C9B0C00246420 /* Level1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF90AD51B4C9B0C00246420 /* Level1.swift */; };
 		FCF90ADA1B4C9B5A00246420 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF90AD91B4C9B5A00246420 /* MainMenu.swift */; };
 		FCF90ADC1B4C9B9B00246420 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = FCF90ADB1B4C9B9B00246420 /* MainMenu.sks */; };
@@ -33,7 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FCF90AD31B4C948C00246420 /* Level.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level.sks; path = ../../../../../../BenSutherland/Documents/Coding/Xcode/Shoot/Shoot/Level.sks; sourceTree = "<group>"; };
+		FC788D821B4DE3F600F70680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/Fipps-Regular.otf"; sourceTree = "<group>"; };
 		FCF90AD51B4C9B0C00246420 /* Level1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Level1.swift; path = ../../../../../../BenSutherland/Documents/Coding/Xcode/Shoot/Shoot/Level1.swift; sourceTree = "<group>"; };
 		FCF90AD91B4C9B5A00246420 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenu.swift; path = ../../../../../../BenSutherland/Documents/Coding/Xcode/Shoot/Shoot/MainMenu.swift; sourceTree = "<group>"; };
 		FCF90ADB1B4C9B9B00246420 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = MainMenu.sks; path = ../../../../../../BenSutherland/Documents/Coding/Xcode/Shoot/Shoot/MainMenu.sks; sourceTree = "<group>"; };
@@ -98,11 +98,11 @@
 				FCF90AD51B4C9B0C00246420 /* Level1.swift */,
 				FCF90ADD1B4CC0A200246420 /* Level1.sks */,
 				FCFF8F031B4BC6740087383C /* Level.swift */,
-				FCF90AD31B4C948C00246420 /* Level.sks */,
 				FCFF8F051B4BC6740087383C /* GameViewController.swift */,
 				FCFF8F071B4BC6740087383C /* Main.storyboard */,
 				FCFF8F0A1B4BC6740087383C /* Images.xcassets */,
 				FCFF8F0C1B4BC6740087383C /* LaunchScreen.xib */,
+				FC788D831B4DE3F600F70680 /* Fipps-Regular.otf */,
 				FCFF8EFD1B4BC6740087383C /* Supporting Files */,
 			);
 			path = Shoot;
@@ -215,11 +215,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCFF8F0E1B4BC6740087383C /* LaunchScreen.xib in Resources */,
+				FC788D811B4DE3F600F70680 /* Fipps-Regular.otf in Resources */,
 				FCFF8F0B1B4BC6740087383C /* Images.xcassets in Resources */,
 				FCFF8F261B4BD0570087383C /* sprites.atlas in Resources */,
 				FCFF8F091B4BC6740087383C /* Main.storyboard in Resources */,
 				FCF90ADC1B4C9B9B00246420 /* MainMenu.sks in Resources */,
-				FCF90AD41B4C948C00246420 /* Level.sks in Resources */,
 				FCF90ADE1B4CC0A200246420 /* Level1.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +265,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		FC788D831B4DE3F600F70680 /* Fipps-Regular.otf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC788D821B4DE3F600F70680 /* Base */,
+			);
+			name = "Fipps-Regular.otf";
+			sourceTree = "<group>";
+		};
 		FCFF8F071B4BC6740087383C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

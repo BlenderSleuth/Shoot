@@ -25,7 +25,6 @@ class MainMenu: SKScene {
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        
         if let UITouches = touches as? Set<UITouch> {
             for touch in UITouches {
                 let location = touch.locationInNode(self)
