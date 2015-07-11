@@ -16,11 +16,14 @@ class Level: SKScene, SKPhysicsContactDelegate {
     let enemyCategory: UInt32 = 0x1 << 2
     
     var bulletCount = 20
+    var enemyCount = 4
+    var points = 0
     
     override func didMoveToView(view: SKView) {
         initGun()
-        initBulletLabel()
-        initWall()
+        initLabels()
+        //initWall()
+        initOnslaught()
         self.physicsWorld.contactDelegate = self
     }
 
@@ -39,10 +42,15 @@ class Level: SKScene, SKPhysicsContactDelegate {
         wall.physicsBody?.contactTestBitMask = bulletCategory
         wall.physicsBody?.collisionBitMask = bulletCategory
     }
-    func initBulletLabel() {
+
+    func initLabels() {
         let bulletLabel = childNodeWithName("bulletLabel") as! SKLabelNode
         bulletLabel.position = CGPointMake(CGRectGetMidX(self.frame) / 3, CGRectGetMaxY(self.frame) / 4 * 3)
         bulletLabel.text = "Bullets: \(bulletCount)"
+        
+        let pointLabel = childNodeWithName("pointLabel") as! SKLabelNode
+        pointLabel.position = CGPointMake(CGRectGetMaxX(self.frame) / 6 * 5, CGRectGetMaxY(self.frame) / 4 * 3)
+        pointLabel.text = "Points: \(points)"
     }
     func initBullet()  -> SKSpriteNode {
         let gun = self.childNodeWithName("gun") as! SKSpriteNode
@@ -62,6 +70,35 @@ class Level: SKScene, SKPhysicsContactDelegate {
         bullet.physicsBody?.contactTestBitMask = wallCategory | enemyCategory
         bullet.physicsBody?.collisionBitMask = wallCategory | bulletCategory | enemyCategory
         return bullet
+    }
+    
+    func gameOver() {
+        println("Game Over")
+    }
+    func initOnslaught() {
+        let action = [SKAction.runBlock({self.initEnemySpaceship()}), SKAction.waitForDuration(3)]
+        let release = SKAction.sequence(action)
+        
+        self.runAction(SKAction.repeatAction(release, count: enemyCount), completion: nil)
+    }
+    func initEnemySpaceship(){
+        let enemySpaceshipTexture = SKTexture(imageNamed: "alien_spaceship")
+        let enemySpaceship = SKSpriteNode(texture: enemySpaceshipTexture)
+        let enemyPositionX = CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(self.frame))) + 10)
+        
+        enemySpaceship.position = CGPointMake(enemyPositionX, CGRectGetMaxY(self.frame) + enemySpaceship.size.height)
+        enemySpaceship.size = CGSizeMake(CGRectGetWidth(self.frame) / 6, CGRectGetWidth(self.frame) / 6)
+        
+        enemySpaceship.physicsBody = SKPhysicsBody(texture: enemySpaceshipTexture, size: enemySpaceship.size)
+        enemySpaceship.physicsBody?.mass = 0.2
+        
+        enemySpaceship.physicsBody?.categoryBitMask = enemyCategory
+        enemySpaceship.physicsBody?.collisionBitMask = bulletCategory | wallCategory
+        enemySpaceship.physicsBody?.contactTestBitMask = bulletCategory
+        
+        self.addChild(enemySpaceship)
+        
+        enemySpaceship.physicsBody?.applyImpulse(CGVectorMake(0, -15))
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -87,6 +124,9 @@ class Level: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: NSTimeInterval) {
         let bulletLabel = childNodeWithName("bulletLabel") as! SKLabelNode
         bulletLabel.text = "Bullets: \(bulletCount)"
+        
+        let pointLabel = childNodeWithName("pointLabel") as! SKLabelNode
+        pointLabel.text = "Points: \(points)"
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -97,7 +137,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
             println("Hit Wall")
         }
         if collision == enemyCategory | bulletCategory {
-            println("Hit Wall")
+            println("Hit Enemy")
+            points++
         }
     }
 }

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FC788D811B4DE3F600F70680 /* Fipps-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC788D831B4DE3F600F70680 /* Fipps-Regular.otf */; };
+		38CFDB981B50CEA4002A0E84 /* Fipps-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 38CFDB961B50CEA4002A0E84 /* Fipps-Regular.otf */; };
+		38CFDB991B50CEA4002A0E84 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 38CFDB971B50CEA4002A0E84 /* sprites.atlas */; };
 		FCF90AD61B4C9B0C00246420 /* Level1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF90AD51B4C9B0C00246420 /* Level1.swift */; };
 		FCF90ADA1B4C9B5A00246420 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF90AD91B4C9B5A00246420 /* MainMenu.swift */; };
 		FCF90ADC1B4C9B9B00246420 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = FCF90ADB1B4C9B9B00246420 /* MainMenu.sks */; };
@@ -15,11 +16,8 @@
 		FCFF8F001B4BC6740087383C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFF8EFF1B4BC6740087383C /* AppDelegate.swift */; };
 		FCFF8F041B4BC6740087383C /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFF8F031B4BC6740087383C /* Level.swift */; };
 		FCFF8F061B4BC6740087383C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFF8F051B4BC6740087383C /* GameViewController.swift */; };
-		FCFF8F091B4BC6740087383C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCFF8F071B4BC6740087383C /* Main.storyboard */; };
 		FCFF8F0B1B4BC6740087383C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCFF8F0A1B4BC6740087383C /* Images.xcassets */; };
-		FCFF8F0E1B4BC6740087383C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFF8F0C1B4BC6740087383C /* LaunchScreen.xib */; };
 		FCFF8F1A1B4BC6740087383C /* ShootTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFF8F191B4BC6740087383C /* ShootTests.swift */; };
-		FCFF8F261B4BD0570087383C /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FCFF8F251B4BD0570087383C /* sprites.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,10 +31,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FC788D821B4DE3F600F70680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/Fipps-Regular.otf"; sourceTree = "<group>"; };
-		FCF90AD51B4C9B0C00246420 /* Level1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Level1.swift; path = ../../../../../../BenSutherland/Documents/Coding/Xcode/Shoot/Shoot/Level1.swift; sourceTree = "<group>"; };
-		FCF90AD91B4C9B5A00246420 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenu.swift; path = ../../../../../../BenSutherland/Documents/Coding/Xcode/Shoot/Shoot/MainMenu.swift; sourceTree = "<group>"; };
-		FCF90ADB1B4C9B9B00246420 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = MainMenu.sks; path = ../../../../../../BenSutherland/Documents/Coding/Xcode/Shoot/Shoot/MainMenu.sks; sourceTree = "<group>"; };
+		38CFDB961B50CEA4002A0E84 /* Fipps-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Fipps-Regular.otf"; path = "Resources/Fipps-Regular.otf"; sourceTree = "<group>"; };
+		38CFDB971B50CEA4002A0E84 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = sprites.atlas; path = Resources/sprites.atlas; sourceTree = "<group>"; };
+		FCF90AD51B4C9B0C00246420 /* Level1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level1.swift; sourceTree = "<group>"; };
+		FCF90AD91B4C9B5A00246420 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		FCF90ADB1B4C9B9B00246420 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		FCF90ADD1B4CC0A200246420 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 		FCFF8EFA1B4BC6740087383C /* Shoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCFF8EFE1B4BC6740087383C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,7 +48,6 @@
 		FCFF8F131B4BC6740087383C /* ShootTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShootTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCFF8F181B4BC6740087383C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCFF8F191B4BC6740087383C /* ShootTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootTests.swift; sourceTree = "<group>"; };
-		FCFF8F251B4BD0570087383C /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = sprites.atlas; path = ../../../../../../bensutherland/Documents/Coding/Xcode/Shoot/Shoot/sprites.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38CFDB9B1B50CFB0002A0E84 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				38CFDB961B50CEA4002A0E84 /* Fipps-Regular.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		FCFF8EF11B4BC6730087383C = {
 			isa = PBXGroup;
 			children = (
@@ -91,7 +97,8 @@
 		FCFF8EFC1B4BC6740087383C /* Shoot */ = {
 			isa = PBXGroup;
 			children = (
-				FCFF8F251B4BD0570087383C /* sprites.atlas */,
+				38CFDB9B1B50CFB0002A0E84 /* Fonts */,
+				38CFDB971B50CEA4002A0E84 /* sprites.atlas */,
 				FCFF8EFF1B4BC6740087383C /* AppDelegate.swift */,
 				FCF90AD91B4C9B5A00246420 /* MainMenu.swift */,
 				FCF90ADB1B4C9B9B00246420 /* MainMenu.sks */,
@@ -102,7 +109,6 @@
 				FCFF8F071B4BC6740087383C /* Main.storyboard */,
 				FCFF8F0A1B4BC6740087383C /* Images.xcassets */,
 				FCFF8F0C1B4BC6740087383C /* LaunchScreen.xib */,
-				FC788D831B4DE3F600F70680 /* Fipps-Regular.otf */,
 				FCFF8EFD1B4BC6740087383C /* Supporting Files */,
 			);
 			path = Shoot;
@@ -214,12 +220,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCFF8F0E1B4BC6740087383C /* LaunchScreen.xib in Resources */,
-				FC788D811B4DE3F600F70680 /* Fipps-Regular.otf in Resources */,
 				FCFF8F0B1B4BC6740087383C /* Images.xcassets in Resources */,
-				FCFF8F261B4BD0570087383C /* sprites.atlas in Resources */,
-				FCFF8F091B4BC6740087383C /* Main.storyboard in Resources */,
+				38CFDB991B50CEA4002A0E84 /* sprites.atlas in Resources */,
 				FCF90ADC1B4C9B9B00246420 /* MainMenu.sks in Resources */,
+				38CFDB981B50CEA4002A0E84 /* Fipps-Regular.otf in Resources */,
 				FCF90ADE1B4CC0A200246420 /* Level1.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,14 +269,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FC788D831B4DE3F600F70680 /* Fipps-Regular.otf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FC788D821B4DE3F600F70680 /* Base */,
-			);
-			name = "Fipps-Regular.otf";
-			sourceTree = "<group>";
-		};
 		FCFF8F071B4BC6740087383C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
