@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		386033C81B50DD110032B5EE /* AlienFireDamage.sks in Resources */ = {isa = PBXBuildFile; fileRef = 386033C61B50DD110032B5EE /* AlienFireDamage.sks */; };
+		386033C91B50DD110032B5EE /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 386033C71B50DD110032B5EE /* spark.png */; };
+		386033CB1B50DE9B0032B5EE /* AlienDamageSmoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 386033CA1B50DE9B0032B5EE /* AlienDamageSmoke.sks */; };
+		386033CD1B50E5120032B5EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCFF8F071B4BC6740087383C /* Main.storyboard */; };
+		386033CE1B50E5150032B5EE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFF8F0C1B4BC6740087383C /* LaunchScreen.xib */; };
 		38CFDB981B50CEA4002A0E84 /* Fipps-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 38CFDB961B50CEA4002A0E84 /* Fipps-Regular.otf */; };
 		38CFDB991B50CEA4002A0E84 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 38CFDB971B50CEA4002A0E84 /* sprites.atlas */; };
 		FCF90AD61B4C9B0C00246420 /* Level1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF90AD51B4C9B0C00246420 /* Level1.swift */; };
@@ -31,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		386033C61B50DD110032B5EE /* AlienFireDamage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AlienFireDamage.sks; sourceTree = "<group>"; };
+		386033C71B50DD110032B5EE /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		386033CA1B50DE9B0032B5EE /* AlienDamageSmoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AlienDamageSmoke.sks; sourceTree = "<group>"; };
 		38CFDB961B50CEA4002A0E84 /* Fipps-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Fipps-Regular.otf"; path = "Resources/Fipps-Regular.otf"; sourceTree = "<group>"; };
 		38CFDB971B50CEA4002A0E84 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = sprites.atlas; path = Resources/sprites.atlas; sourceTree = "<group>"; };
 		FCF90AD51B4C9B0C00246420 /* Level1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level1.swift; sourceTree = "<group>"; };
@@ -68,6 +76,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		386033CC1B50DF050032B5EE /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				386033C61B50DD110032B5EE /* AlienFireDamage.sks */,
+				386033CA1B50DE9B0032B5EE /* AlienDamageSmoke.sks */,
+				386033C71B50DD110032B5EE /* spark.png */,
+			);
+			name = Particles;
+			sourceTree = "<group>";
+		};
 		38CFDB9B1B50CFB0002A0E84 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +115,7 @@
 		FCFF8EFC1B4BC6740087383C /* Shoot */ = {
 			isa = PBXGroup;
 			children = (
+				386033CC1B50DF050032B5EE /* Particles */,
 				38CFDB9B1B50CFB0002A0E84 /* Fonts */,
 				38CFDB971B50CEA4002A0E84 /* sprites.atlas */,
 				FCFF8EFF1B4BC6740087383C /* AppDelegate.swift */,
@@ -220,10 +239,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				386033C81B50DD110032B5EE /* AlienFireDamage.sks in Resources */,
 				FCFF8F0B1B4BC6740087383C /* Images.xcassets in Resources */,
+				386033CB1B50DE9B0032B5EE /* AlienDamageSmoke.sks in Resources */,
 				38CFDB991B50CEA4002A0E84 /* sprites.atlas in Resources */,
+				386033C91B50DD110032B5EE /* spark.png in Resources */,
 				FCF90ADC1B4C9B9B00246420 /* MainMenu.sks in Resources */,
 				38CFDB981B50CEA4002A0E84 /* Fipps-Regular.otf in Resources */,
+				386033CE1B50E5150032B5EE /* LaunchScreen.xib in Resources */,
+				386033CD1B50E5120032B5EE /* Main.storyboard in Resources */,
 				FCF90ADE1B4CC0A200246420 /* Level1.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,8 +401,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Shoot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -388,8 +414,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Shoot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

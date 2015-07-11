@@ -15,8 +15,8 @@ class Level: SKScene, SKPhysicsContactDelegate {
     let wallCategory: UInt32 = 0x1 << 1
     let enemyCategory: UInt32 = 0x1 << 2
     
-    var bulletCount = 20
-    var enemyCount = 4
+    var bulletCount = 200
+    var enemyCount = 100
     var points = 0
     
     override func didMoveToView(view: SKView) {
@@ -93,7 +93,7 @@ class Level: SKScene, SKPhysicsContactDelegate {
         enemySpaceship.physicsBody?.mass = 0.2
         
         enemySpaceship.physicsBody?.categoryBitMask = enemyCategory
-        enemySpaceship.physicsBody?.collisionBitMask = bulletCategory | wallCategory
+        enemySpaceship.physicsBody?.collisionBitMask = bulletCategory | wallCategory | enemyCategory
         enemySpaceship.physicsBody?.contactTestBitMask = bulletCategory
         
         self.addChild(enemySpaceship)
@@ -136,8 +136,24 @@ class Level: SKScene, SKPhysicsContactDelegate {
         if collision == wallCategory | bulletCategory {
             println("Hit Wall")
         }
+        
         if collision == enemyCategory | bulletCategory {
+            
+            var enemy = contact.bodyA.node as! SKSpriteNode
+            var bullet = contact.bodyB.node as! SKSpriteNode
+            
+            if contact.bodyB.categoryBitMask == enemyCategory {
+                enemy = contact.bodyB.node as! SKSpriteNode
+                bullet = contact.bodyA.node as! SKSpriteNode
+            }
+            
+            let point = enemy.convertPoint(contact.contactPoint, fromNode: self)
+            
             println("Hit Enemy")
+            let fire = SKEmitterNode(fileNamed: "AlienFireDamage.sks")
+            fire.position = point
+            enemy.addChild(fire)
+            bullet.removeFromParent()
             points++
         }
     }
