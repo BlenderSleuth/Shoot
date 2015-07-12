@@ -31,7 +31,7 @@ class MainMenu: SKScene {
                 let touchedNode = nodeAtPoint(location)
                 
                 if touchedNode == childNodeWithName("playButton") {
-                    let scene = Level1(fileNamed: "Level1")
+                    let scene = Game(fileNamed: "Game")
                     self.view?.presentScene(scene)
                 }
             }
