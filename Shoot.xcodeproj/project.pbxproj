@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3819B2A11B53926300CE6909 /* AlienShipPieces.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3819B29F1B53926300CE6909 /* AlienShipPieces.sks */; };
+		3819B2A41B5399BC00CE6909 /* AlienSpaceship.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3819B2A31B5399BC00CE6909 /* AlienSpaceship.atlas */; };
 		386033C81B50DD110032B5EE /* AlienFireDamage.sks in Resources */ = {isa = PBXBuildFile; fileRef = 386033C61B50DD110032B5EE /* AlienFireDamage.sks */; };
 		386033C91B50DD110032B5EE /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 386033C71B50DD110032B5EE /* spark.png */; };
 		386033CB1B50DE9B0032B5EE /* AlienDamageSmoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 386033CA1B50DE9B0032B5EE /* AlienDamageSmoke.sks */; };
+		386261AA1B5321FF0052A20D /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386261A91B5321FF0052A20D /* EnemyNode.swift */; };
+		386261B41B5349030052A20D /* Stars.sks in Resources */ = {isa = PBXBuildFile; fileRef = 386261B31B5349030052A20D /* Stars.sks */; };
+		386C16AB1B525FDB00D2B38D /* AlienExhaustFlames.sks in Resources */ = {isa = PBXBuildFile; fileRef = 386C16AA1B525FDB00D2B38D /* AlienExhaustFlames.sks */; };
 		38BDD6971B5100E700F2D43A /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38BDD6961B5100E700F2D43A /* GameOver.sks */; };
 		38BDD6991B5100F900F2D43A /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BDD6981B5100F900F2D43A /* GameOver.swift */; };
 		38CFDB981B50CEA4002A0E84 /* Fipps-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 38CFDB961B50CEA4002A0E84 /* Fipps-Regular.otf */; };
@@ -37,9 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3819B29F1B53926300CE6909 /* AlienShipPieces.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AlienShipPieces.sks; sourceTree = "<group>"; };
+		3819B2A31B5399BC00CE6909 /* AlienSpaceship.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = AlienSpaceship.atlas; path = ../../../../../Downloads/AlienSpaceship.atlas; sourceTree = "<group>"; };
 		386033C61B50DD110032B5EE /* AlienFireDamage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AlienFireDamage.sks; sourceTree = "<group>"; };
 		386033C71B50DD110032B5EE /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		386033CA1B50DE9B0032B5EE /* AlienDamageSmoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AlienDamageSmoke.sks; sourceTree = "<group>"; };
+		386261A91B5321FF0052A20D /* EnemyNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyNode.swift; sourceTree = "<group>"; };
+		386261B31B5349030052A20D /* Stars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stars.sks; sourceTree = "<group>"; };
+		386C16AA1B525FDB00D2B38D /* AlienExhaustFlames.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AlienExhaustFlames.sks; sourceTree = "<group>"; };
 		38BDD6961B5100E700F2D43A /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 		38BDD6981B5100F900F2D43A /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		38CFDB961B50CEA4002A0E84 /* Fipps-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Fipps-Regular.otf"; path = "Resources/Fipps-Regular.otf"; sourceTree = "<group>"; };
@@ -83,7 +93,10 @@
 			children = (
 				386033C61B50DD110032B5EE /* AlienFireDamage.sks */,
 				386033CA1B50DE9B0032B5EE /* AlienDamageSmoke.sks */,
+				386C16AA1B525FDB00D2B38D /* AlienExhaustFlames.sks */,
 				386033C71B50DD110032B5EE /* spark.png */,
+				386261B31B5349030052A20D /* Stars.sks */,
+				3819B29F1B53926300CE6909 /* AlienShipPieces.sks */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
@@ -158,6 +171,8 @@
 				386033CC1B50DF050032B5EE /* Particles */,
 				38CFDB9B1B50CFB0002A0E84 /* Fonts */,
 				38CFDB971B50CEA4002A0E84 /* sprites.atlas */,
+				3819B2A31B5399BC00CE6909 /* AlienSpaceship.atlas */,
+				386261A91B5321FF0052A20D /* EnemyNode.swift */,
 				FCFF8EFF1B4BC6740087383C /* AppDelegate.swift */,
 				FCFF8F051B4BC6740087383C /* GameViewController.swift */,
 				FCFF8F071B4BC6740087383C /* Main.storyboard */,
@@ -274,6 +289,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3819B2A41B5399BC00CE6909 /* AlienSpaceship.atlas in Resources */,
+				386261B41B5349030052A20D /* Stars.sks in Resources */,
+				386C16AB1B525FDB00D2B38D /* AlienExhaustFlames.sks in Resources */,
 				386033C91B50DD110032B5EE /* spark.png in Resources */,
 				386033C81B50DD110032B5EE /* AlienFireDamage.sks in Resources */,
 				386033CB1B50DE9B0032B5EE /* AlienDamageSmoke.sks in Resources */,
@@ -282,6 +300,7 @@
 				38BDD6971B5100E700F2D43A /* GameOver.sks in Resources */,
 				FCFF8F0B1B4BC6740087383C /* Images.xcassets in Resources */,
 				38CFDB991B50CEA4002A0E84 /* sprites.atlas in Resources */,
+				3819B2A11B53926300CE6909 /* AlienShipPieces.sks in Resources */,
 				38CFDB981B50CEA4002A0E84 /* Fipps-Regular.otf in Resources */,
 				38EAFA851B52173500727700 /* Main.storyboard in Resources */,
 				38EAFA861B52175300727700 /* LaunchScreen.xib in Resources */,
@@ -306,6 +325,7 @@
 				FCFF8F041B4BC6740087383C /* Game.swift in Sources */,
 				38BDD6991B5100F900F2D43A /* GameOver.swift in Sources */,
 				FCFF8F061B4BC6740087383C /* GameViewController.swift in Sources */,
+				386261AA1B5321FF0052A20D /* EnemyNode.swift in Sources */,
 				FCFF8F001B4BC6740087383C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

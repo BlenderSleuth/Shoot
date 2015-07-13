@@ -33,41 +33,19 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" alpha="0.69999999999999973" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spaceship.png" translatesAutoresizingMaskIntoConstraints="NO" id="gnq-ur-dY5">
-                    <rect key="frame" x="147" y="221" width="186" height="156"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="186" id="TII-Fa-44x"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bullet.png" translatesAutoresizingMaskIntoConstraints="NO" id="csf-OY-5Vh">
-                    <rect key="frame" x="217" y="147" width="47" height="63"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="47" id="ChA-sD-GMj"/>
-                        <constraint firstAttribute="height" constant="63" id="mEf-P7-99w"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.93433779761904767" green="0.4898549842664931" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5yw-dl-Irf"/>
-                <constraint firstItem="gnq-ur-dY5" firstAttribute="top" secondItem="csf-OY-5Vh" secondAttribute="bottom" constant="11" id="BQE-KC-6xA"/>
                 <constraint firstAttribute="trailing" secondItem="kId-c2-rCX" secondAttribute="trailing" constant="24" id="FqN-yl-J7T"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="IOI-4L-MJ1"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="49" id="QzN-r9-hPj"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="top" secondItem="gnq-ur-dY5" secondAttribute="bottom" constant="62" id="SeI-7M-Zxb"/>
-                <constraint firstItem="gnq-ur-dY5" firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="TBu-3o-wvj"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="iYy-Tx-Utq"/>
-                <constraint firstItem="gnq-ur-dY5" firstAttribute="centerX" secondItem="csf-OY-5Vh" secondAttribute="centerX" id="mh3-xa-g9A"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="qmA-hv-2Xa"/>
-                <constraint firstItem="csf-OY-5Vh" firstAttribute="top" secondItem="kId-c2-rCX" secondAttribute="bottom" constant="8" symbolic="YES" id="vQd-ro-CCi"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
-    <resources>
-        <image name="bullet.png" width="1280" height="1280"/>
-        <image name="spaceship.png" width="500" height="413"/>
-    </resources>
 </document>

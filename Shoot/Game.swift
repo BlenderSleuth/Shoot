@@ -8,16 +8,16 @@
 
 import SpriteKit
 
+//Collision Categories
+let bulletCategory: UInt32 = 0x1 << 0
+let wallCategory: UInt32 = 0x1 << 1
+let enemyCategory: UInt32 = 0x1 << 2
+let boundaryCategory: UInt32 = 0x1 << 3
+
 class Game: SKScene, SKPhysicsContactDelegate {
     
-    //Collision Categories
-    let bulletCategory: UInt32 = 0x1 << 0
-    let wallCategory: UInt32 = 0x1 << 1
-    let enemyCategory: UInt32 = 0x1 << 2
-    let boundaryCategory: UInt32 = 0x1 << 3
-    
     var bulletCount = 50
-    var enemyCount = 5
+    var enemyCount = 10
     var points = 0
     var lives = 10
     
@@ -81,14 +81,21 @@ class Game: SKScene, SKPhysicsContactDelegate {
         enemyLabel.text = "Enemies to go: \(enemyCount)"
     }
     func initWorld() {
-        let point1 = CGPointMake(0, -CGRectGetWidth(self.frame) / 4)
-        let point2 = CGPointMake(CGRectGetMaxX(self.frame), -CGRectGetWidth(self.frame) / 4)
+        let point1 = CGPointMake(0, -CGRectGetWidth(self.frame) / 6)
+        let point2 = CGPointMake(CGRectGetMaxX(self.frame), -CGRectGetWidth(self.frame) / 6)
         
         self.physicsBody = SKPhysicsBody(edgeFromPoint: point1, toPoint: point2)
         self.physicsBody?.dynamic = false
         self.physicsBody?.categoryBitMask = boundaryCategory
         self.physicsBody?.collisionBitMask = bulletCategory
         self.physicsBody?.contactTestBitMask = enemyCategory
+        
+        self.backgroundColor = UIColor.blackColor()
+        
+        let stars = SKEmitterNode(fileNamed: "Stars.sks")
+        stars.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame))
+        stars.advanceSimulationTime(10)
+        self.addChild(stars)
     }
     
     func gameOver() {
@@ -99,7 +106,19 @@ class Game: SKScene, SKPhysicsContactDelegate {
         self.view?.presentScene(scene)
     }
     func initWave() {
-        let action = [SKAction.runBlock{self.initEnemySpaceship()}, SKAction.runBlock{--self.enemyCount}, SKAction.waitForDuration(enemyFrequency)]
+        let range: UInt32 = 50
+        var random: CGFloat = 0
+        var randomSize = CGSizeMake(random, random)
+        
+        let action = [
+            SKAction.runBlock{
+                self.initEnemy()
+            },
+            SKAction.runBlock{
+                --self.enemyCount
+            },
+            SKAction.waitForDuration(enemyFrequency)
+        ]
         let release = SKAction.sequence(action)
         
         self.runAction(SKAction.repeatAction(release, count: enemyCount), completion: {
@@ -107,37 +126,21 @@ class Game: SKScene, SKPhysicsContactDelegate {
             self.runAction(SKAction.sequence(array))
         })
     }
-    func initEnemySpaceship(){
-        let enemyTexture = SKTexture(imageNamed: "alien_spaceship")
-        let enemyPositionX = CGFloat(arc4random_uniform(UInt32(CGRectGetMaxX(self.frame) - 200)) + 100)
+    func initEnemy(){
+        let size = CGSizeMake(CGRectGetWidth(self.frame) / 6, CGRectGetWidth(self.frame) / 6)
         
-        let enemySpaceship = SKSpriteNode(texture: enemyTexture)
+        let enemyPositionX = CGFloat(arc4random_uniform(UInt32(CGRectGetWidth(self.frame) - 200)) + 100)
+        let enemyPosition = CGPointMake(enemyPositionX, CGRectGetHeight(self.frame) + size.height / 2)
         
-        enemySpaceship.position = CGPointMake(enemyPositionX, CGRectGetMaxY(self.frame) + enemySpaceship.size.height)
-        enemySpaceship.size = CGSizeMake(CGRectGetWidth(self.frame) / 6, CGRectGetWidth(self.frame) / 6)
-        enemySpaceship.name = "enemy"
+        let enemy = EnemyNode(size: size, position: enemyPosition)
+        self.addChild(enemy)
         
-        enemySpaceship.physicsBody = SKPhysicsBody(rectangleOfSize: enemySpaceship.size)
-        enemySpaceship.physicsBody?.dynamic = true
-        
-        enemySpaceship.physicsBody?.categoryBitMask = enemyCategory
-        enemySpaceship.physicsBody?.contactTestBitMask = bulletCategory | boundaryCategory
-        
-        self.addChild(enemySpaceship)
-        let actionArray = [SKAction.moveToY(-CGRectGetWidth(self.frame) / 3, duration: enemySpeed), SKAction.runBlock({enemySpaceship.removeFromParent()})]
+        let actionArray = [SKAction.moveToY(-enemy.size.height, duration: enemySpeed), SKAction.runBlock({enemy.removeFromParent()})]
         let sequence = SKAction.sequence(actionArray)
         
-        enemySpaceship.runAction(sequence)
+        enemy.runAction(sequence)
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        if bulletCount != 0 {
-            let bullet = initBullet()
-            self.addChild(bullet)
-            --bulletCount
-            bullet.physicsBody?.applyImpulse(CGVectorMake(0, 15))
-        }
-    }
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
         for touch in touches as! Set<UITouch> {
             let location = touch.locationInNode(self)
@@ -148,6 +151,14 @@ class Game: SKScene, SKPhysicsContactDelegate {
             if touchedNode == gun {
                 gun.position.x = location.x
             }
+        }
+    }
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if bulletCount != 0 {
+            let bullet = initBullet()
+            self.addChild(bullet)
+            --bulletCount
+            bullet.physicsBody?.applyImpulse(CGVectorMake(0, 15))
         }
     }
     override func update(currentTime: NSTimeInterval) {
@@ -173,19 +184,39 @@ class Game: SKScene, SKPhysicsContactDelegate {
             println("Hit Wall")
             
         case enemyCategory | bulletCategory:
-                var enemy = contact.bodyA.node as! SKSpriteNode
+                var enemy = contact.bodyA.node as? EnemyNode
                 var bullet = contact.bodyB.node as! SKSpriteNode
                 
                 if contact.bodyB.categoryBitMask == enemyCategory {
-                    enemy = contact.bodyB.node as! SKSpriteNode
+                    enemy = contact.bodyB.node as? EnemyNode
                     bullet = contact.bodyA.node as! SKSpriteNode
                 }
 
-                let point = enemy.convertPoint(contact.contactPoint, fromNode: self)
+                let point = enemy!.convertPoint(contact.contactPoint, fromNode: self)
                 
                 let fire = SKEmitterNode(fileNamed: "AlienFireDamage.sks")
                 fire.position = point
-                enemy.addChild(fire)
+                enemy!.addChild(fire)
+                if enemy!.health != 0 {
+                    --enemy!.health
+                    switch enemy!.health {
+                    case 1:
+                        enemy!.texture = SKTexture(imageNamed: "cracked4")
+                        let smoke = SKEmitterNode(fileNamed: "AlienDamageSmoke.sks")
+                        let position = CGPointMake(CGFloat(arc4random_uniform(80)) - 40, CGFloat(arc4random_uniform(80)) - 40)
+                        smoke.position = position
+                        enemy?.addChild(smoke)
+                    case 2:
+                        enemy!.texture = SKTexture(imageNamed: "cracked2")
+                    case 3:
+                        enemy!.texture = SKTexture(imageNamed: "cracked1")
+                    default:
+                        break
+                    }
+                    if enemy?.health == 0 {
+                        enemy!.removeFromParent()
+                    }
+                }
                 bullet.removeFromParent()
                 points++
             
