@@ -27,7 +27,7 @@ class GameOver: SKScene {
                 let location = touch.locationInNode(self)
                 let touchedNode = nodeAtPoint(location)
                 
-                if touchedNode == childNodeWithName("backButton") {
+                if touchedNode == childNodeWithName("backButton") || touchedNode == childNodeWithName("mainMenu"){
                     let scene = MainMenu(fileNamed: "MainMenu")
                     self.view?.presentScene(scene)
                 }

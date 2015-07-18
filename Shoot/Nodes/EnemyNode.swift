@@ -10,22 +10,22 @@ import SpriteKit
 
 class EnemyNode: SKSpriteNode {
     var health = 4
-    
+    let exhaustFire = SKEmitterNode(fileNamed: "AlienExhaustFlames")
     init(texture: SKTexture!, color: UIColor!, size: CGSize, position: CGPoint) {
         super.init(texture: texture, color: color, size: size)
         
         self.position = position
-        self.zPosition = 5
+        zPosition = 5
+        name = "enemy"
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 4, center: CGPointMake(0, -30))
+        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 4, center: CGPointMake(0, -30))
         
-        self.physicsBody?.categoryBitMask = enemyCategory
-        self.physicsBody?.collisionBitMask = enemyCategory
-        self.physicsBody?.contactTestBitMask = bulletCategory | boundaryCategory
+        physicsBody?.categoryBitMask = enemyCategory
+        physicsBody?.collisionBitMask = enemyCategory
+        physicsBody?.contactTestBitMask = bulletCategory | boundaryCategory
         
-        let exhaustFire = SKEmitterNode(fileNamed: "AlienExhaustFlames")
-        exhaustFire.position = CGPointMake(0, self.frame.height / 2)
-        self.addChild(exhaustFire)
+        exhaustFire.position = CGPointMake(0, frame.height / 2)
+        addChild(exhaustFire)
     }
     
     convenience init(size: CGSize, position: CGPoint) {
