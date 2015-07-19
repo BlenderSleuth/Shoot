@@ -28,6 +28,8 @@ class GameOver: SKScene {
                 let touchedNode = nodeAtPoint(location)
                 
                 if touchedNode == childNodeWithName("backButton") || touchedNode == childNodeWithName("mainMenu"){
+                    let button = childNodeWithName("backButton") as! SKSpriteNode
+                    button.color = UIColor.purpleColor()
                     let scene = MainMenu(fileNamed: "MainMenu")
                     self.view?.presentScene(scene)
                 }
