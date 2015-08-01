@@ -20,10 +20,16 @@ let bonusBulletCategory: UInt32 = 0x1 << 4
 class Game: SKScene, SKPhysicsContactDelegate {
     //MARK: Properties
     let playerName = "player"
+    let backgroundSpeed: Double = 300
+    var background: SKNode!
+    
+    //MARK: Time variables
+    var delta = NSTimeInterval(0)
+    var lastUpdateTime = NSTimeInterval(0)
     
     //MARK: HUD Variables
     var points = 0
-    var lives = 10
+    var lives = 1000
     var bulletCount = 50
     
     //MARK: Enemy properties
@@ -56,10 +62,10 @@ class Game: SKScene, SKPhysicsContactDelegate {
         bulletLabel.text = "\(bulletCount)"
     }
     func setupWorld() {
-        let point1 = CGPointMake(0, -CGRectGetWidth(self.frame) / 6)
-        let point2 = CGPointMake(CGRectGetMaxX(self.frame), -CGRectGetWidth(self.frame) / 6)
-        let point3 = CGPointMake(CGRectGetMaxX(self.frame), CGRectGetMaxY(self.frame))
-        let point4 = CGPointMake(0, CGRectGetMaxY(self.frame))
+        let point1 = CGPointMake(0, -CGRectGetWidth(frame) / 6)
+        let point2 = CGPointMake(CGRectGetMaxX(frame), -CGRectGetWidth(frame) / 6)
+        let point3 = CGPointMake(CGRectGetMaxX(frame), CGRectGetMaxY(frame))
+        let point4 = CGPointMake(0, CGRectGetMaxY(frame))
         
         let physicsBody1 = SKPhysicsBody(edgeFromPoint: point1, toPoint: point2)
         let physicsBody2 = SKPhysicsBody(edgeFromPoint: point1, toPoint: point4)
@@ -67,12 +73,42 @@ class Game: SKScene, SKPhysicsContactDelegate {
         
         let bodies = [physicsBody1, physicsBody2, physicsBody3]
         
-        self.physicsBody = SKPhysicsBody(bodies: bodies)
-        self.physicsBody?.dynamic = false
-        self.physicsBody?.categoryBitMask = boundaryCategory
-        self.physicsBody?.collisionBitMask = bulletCategory
-        self.physicsBody?.contactTestBitMask = enemyCategory
+        physicsBody = SKPhysicsBody(bodies: bodies)
+        physicsBody?.dynamic = false
+        physicsBody?.categoryBitMask = boundaryCategory
+        physicsBody?.collisionBitMask = bulletCategory
+        physicsBody?.contactTestBitMask = enemyCategory
+        setupBackground()
     }
+    
+    func setupBackground() {
+        let backgroundTexture = SKTexture(imageNamed: "background")
+        
+        background = SKNode()
+        addChild(background)
+
+        for i in 0...2 {
+            let tile = SKSpriteNode(texture: backgroundTexture)
+            tile.anchorPoint = CGPointZero
+            tile.position = CGPoint(x: 0, y: CGFloat(i) * backgroundTexture.size().height)
+            tile.name = "bg"
+            background.addChild(tile)
+        }
+    }
+    func moveBackground() {
+        let positionY = -backgroundSpeed * delta
+        
+        background.position = CGPoint(x: 0, y: background.position.y + CGFloat(positionY))
+        
+        background.enumerateChildNodesWithName("bg", usingBlock: {(node, stop) in
+            let backgroundScreenPosition = self.background.convertPoint(node.position, toNode: self)
+            
+            if backgroundScreenPosition.y <= -node.frame.size.height {
+                node.position = CGPointMake(node.position.x, node.position.y + (node.frame.size.height * 2))
+            }
+        })
+    }
+    
     func setupPlayer() {
         let player = childNodeWithName(playerName) as! SKSpriteNode
         player.physicsBody?.categoryBitMask = playerCategory
@@ -176,6 +212,10 @@ class Game: SKScene, SKPhysicsContactDelegate {
     
     //MARK: Motion update
     override func update(currentTime: NSTimeInterval) {
+        delta = (lastUpdateTime == 0) ? 0 : currentTime - lastUpdateTime
+        lastUpdateTime = currentTime
+        moveBackground()
+        
         processUserMotionForUpdate(currentTime)
     }
     
